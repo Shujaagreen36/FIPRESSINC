@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Falkland Islands Press, Inc.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple: #7c3aed;
+    --purple-hover: #6d28d9;
+    --purple-pale: #f3f0ff;
+    --purple-border: #ddd6fe;
+    --bg: #f8fafc;
+    --white: #ffffff;
+    --text: #374151;
+    --text-light: #6b7280;
+    --text-dark: #111827;
+    --border: #e5e7eb;
+    --shadow: 0 2px 16px rgba(0,0,0,0.07);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family:'Inter',sans-serif; background:var(--bg); color:var(--text); font-size:15px; line-height:1.7; }
+
+  /* NAV */
+  nav { background:var(--white); border-bottom:1px solid var(--border); position:sticky; top:0; z-index:100; }
+  .nav-top { padding:0.3rem 1.5rem; font-size:0.72rem; color:var(--text-light); border-bottom:1px solid var(--border); }
+  .nav-top a { color:var(--purple); text-decoration:none; font-weight:600; }
+  .nav-main { display:flex; align-items:center; padding:0 1.5rem; flex-wrap:wrap; min-height:52px; gap:0.25rem; }
+  .nav-links { display:flex; align-items:center; list-style:none; flex-wrap:wrap; }
+  .nav-links a { padding:0.85rem 0.65rem; font-size:0.82rem; font-weight:600; color:var(--text-dark); text-decoration:none; transition:color 0.15s; white-space:nowrap; }
+  .nav-links a:hover { color:var(--purple); }
+  .nav-links .falcon-link a { color:var(--purple); font-weight:700; }
+  .nav-brand { font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:800; color:var(--purple); padding:0 1rem; white-space:nowrap; }
+  .nav-right { margin-left:auto; font-size:0.75rem; color:var(--text-light); display:flex; gap:1.5rem; flex-wrap:wrap; align-items:center; }
+
+  /* FALCON HERO */
+  .falcon-hero { background:linear-gradient(135deg,#7c3aed 0%,#5b21b6 100%); color:white; padding:4rem 2rem; position:relative; overflow:hidden; }
+  .falcon-hero::before { content:''; position:absolute; inset:0; background:repeating-linear-gradient(-55deg,rgba(255,255,255,0.025) 0,rgba(255,255,255,0.025) 1px,transparent 1px,transparent 28px); }
+  .falcon-inner { max-width:900px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:center; position:relative; z-index:1; }
+  @media(max-width:680px){ .falcon-inner { grid-template-columns:1fr; } }
+  .falcon-badge { display:inline-block; background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); border-radius:20px; padding:0.28rem 0.9rem; font-size:0.68rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:600; margin-bottom:1rem; }
+  .falcon-hero h1 { font-family:'Playfair Display',serif; font-size:clamp(1.9rem,5vw,3rem); font-weight:800; line-height:1.1; margin-bottom:1rem; }
+  .falcon-hero p { font-size:0.92rem; opacity:0.88; line-height:1.8; margin-bottom:0.75rem; }
+  .falcon-stats { display:grid; grid-template-columns:1fr 1fr; gap:0.85rem; }
+  .fstat { background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:8px; padding:1rem; text-align:center; }
+  .fstat-num { font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:800; line-height:1.15; margin-bottom:0.25rem; }
+  .fstat-lbl { font-size:0.65rem; opacity:0.72; letter-spacing:0.08em; text-transform:uppercase; }
+  .falcon-btns { display:flex; gap:0.65rem; flex-wrap:wrap; margin-top:1.25rem; }
+
+  /* BUTTONS */
+  .btn { display:inline-block; padding:0.62rem 1.35rem; border-radius:6px; font-size:0.79rem; font-weight:600; text-decoration:none; cursor:pointer; border:none; transition:all 0.15s; letter-spacing:0.02em; }
+  .btn-white { background:white; color:var(--purple); }
+  .btn-white:hover { background:#f3f0ff; }
+  .btn-ghost { background:transparent; color:white; border:1.5px solid rgba(255,255,255,0.45); }
+  .btn-ghost:hover { border-color:white; }
+  .btn-purple { background:var(--purple); color:white; }
+  .btn-purple:hover { background:var(--purple-hover); }
+
+  /* PAGE */
+  .page { max-width:860px; margin:0 auto; padding:2.5rem 1.5rem 4rem; }
+  .sec-label { font-size:0.67rem; font-weight:700; text-transform:uppercase; letter-spacing:0.2em; color:var(--purple); margin-bottom:1rem; padding-bottom:0.5rem; border-bottom:2px solid #ede9fe; margin-top:2.5rem; }
+
+  /* CARDS */
+  .card { background:var(--white); border-radius:12px; box-shadow:var(--shadow); padding:1.75rem; margin-bottom:1.25rem; }
+  .card h2 { color:var(--purple); font-weight:700; font-size:1.1rem; margin-bottom:0.7rem; }
+  .card h3 { color:var(--purple); font-weight:700; font-size:1rem; margin-bottom:0.6rem; }
+  .card p { color:var(--text); line-height:1.75; margin-bottom:0.65rem; }
+  .card p:last-child { margin-bottom:0; }
+
+  /* FOUNDER QUOTE */
+  .fquote { color:var(--purple); font-weight:600; line-height:1.75; border-left:3px solid var(--purple); padding-left:1rem; margin-top:1rem; font-size:0.95rem; }
+
+  /* PRIZE */
+  .prize-card { background:linear-gradient(135deg,#faf5ff,#f3f0ff); border:1px solid var(--purple-border); border-radius:12px; padding:1.75rem; margin-bottom:1.25rem; }
+  .prize-card h2 { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--purple); margin-bottom:0.75rem; }
+  .prize-card p { color:var(--text); line-height:1.75; margin-bottom:0.65rem; }
+
+  /* PODCAST */
+  .podcast { background:linear-gradient(135deg,#1e1b4b,#312e81); color:white; border-radius:12px; padding:1.5rem; margin-bottom:1.25rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+  .podcast h3 { font-family:'Playfair Display',serif; font-size:1.05rem; margin-bottom:0.25rem; }
+  .podcast p { font-size:0.82rem; opacity:0.8; }
+
+  /* MISSION TAGS */
+  .mtags { display:flex; flex-wrap:wrap; gap:0.45rem; margin:0.75rem 0; }
+  .mtag { background:#f3f0ff; color:var(--purple); font-size:0.75rem; font-weight:600; padding:0.3rem 0.8rem; border-radius:20px; border:1px solid var(--purple-border); }
+
+  /* IDEA CARDS */
+  .idea { background:white; border-radius:12px; box-shadow:var(--shadow); padding:1.5rem; margin-bottom:1rem; border-left:4px solid var(--purple); }
+  .idea h3 { font-size:0.97rem; font-weight:700; color:var(--text-dark); margin-bottom:0.5rem; }
+  .idea p { color:var(--text); line-height:1.75; }
+
+  /* BOOK SHELF */
+  .shelf { display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:0.85rem; margin-bottom:1.25rem; }
+  .scard { background:white; border:1px solid var(--border); border-radius:8px; overflow:hidden; box-shadow:var(--shadow); transition:transform 0.15s; }
+  .scard:hover { transform:translateY(-3px); }
+  .scover { width:100%; aspect-ratio:2/3; background:linear-gradient(160deg,#f3f0ff,#e9d5ff); display:flex; align-items:center; justify-content:center; padding:0.75rem; font-family:'Playfair Display',serif; font-size:0.78rem; color:var(--purple); text-align:center; line-height:1.3; border-bottom:1px solid var(--border); }
+  .sinfo { padding:0.55rem 0.65rem; }
+  .sinfo h5 { font-size:0.72rem; font-weight:700; color:var(--text-dark); margin-bottom:0.1rem; }
+  .sinfo p { font-size:0.62rem; color:var(--text-light); text-transform:uppercase; letter-spacing:0.04em; }
+
+  /* AI TOOL */
+  .tool { background:white; border-radius:12px; box-shadow:var(--shadow); border:2px solid var(--purple-border); padding:1.75rem; margin-bottom:1.25rem; }
+  .tool h2 { color:var(--purple); font-size:1.1rem; font-weight:700; margin-bottom:0.3rem; }
+  .tool .sub { font-size:0.81rem; color:var(--text-light); margin-bottom:1.2rem; }
+  .tabs { display:flex; border-bottom:2px solid var(--border); margin-bottom:1.1rem; }
+  .tbtn { font-size:0.77rem; font-weight:600; padding:0.55rem 1rem; background:none; border:none; cursor:pointer; color:var(--text-light); border-bottom:2px solid transparent; margin-bottom:-2px; transition:all 0.15s; }
+  .tbtn.active { color:var(--purple); border-bottom-color:var(--purple); }
+  .tpanel { display:none; }
+  .tpanel.active { display:block; }
+  .frow { display:grid; grid-template-columns:1fr 1fr; gap:0.7rem; margin-bottom:0.7rem; }
+  @media(max-width:500px){ .frow { grid-template-columns:1fr; } }
+  .fg { display:flex; flex-direction:column; gap:0.28rem; margin-bottom:0.7rem; }
+  .flbl { font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-dark); }
+  .fi, .ft, .fs { border:1.5px solid var(--border); border-radius:6px; padding:0.58rem 0.8rem; font-family:'Inter',sans-serif; font-size:0.87rem; color:var(--text-dark); background:var(--bg); outline:none; width:100%; transition:border-color 0.15s; }
+  .fi:focus,.ft:focus,.fs:focus { border-color:var(--purple); background:white; }
+  .ft { min-height:110px; resize:vertical; }
+  .genbtn { width:100%; padding:0.82rem; background:var(--purple); color:white; font-family:'Inter',sans-serif; font-size:0.81rem; font-weight:700; border:none; border-radius:8px; cursor:pointer; letter-spacing:0.04em; transition:background 0.15s; margin-top:0.25rem; }
+  .genbtn:hover { background:var(--purple-hover); }
+  .genbtn:disabled { opacity:0.5; cursor:not-allowed; }
+  .loadmsg { text-align:center; padding:1.25rem; color:var(--purple); font-size:0.83rem; font-weight:500; display:none; }
+  .loadmsg.on { display:block; }
+  .loadmsg::after { content:''; animation:dots 1s infinite; }
+  @keyframes dots { 0%{content:'.'} 33%{content:'..'} 66%{content:'...'} }
+  .rbox { margin-top:1.1rem; background:#faf5ff; border:1px solid var(--purple-border); border-radius:8px; padding:1.5rem; display:none; animation:fi2 0.4s ease; }
+  .rbox.on { display:block; }
+  @keyframes fi2 { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
+  .rtitle { font-family:'Playfair Display',serif; font-size:1.35rem; color:var(--purple); font-weight:800; margin-bottom:0.2rem; }
+  .rmeta { font-size:0.72rem; color:var(--text-light); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:0.9rem; }
+  .rbody { font-size:0.91rem; color:var(--text); line-height:1.8; white-space:pre-wrap; }
+  .rtags { display:flex; flex-wrap:wrap; gap:0.4rem; margin-top:0.9rem; }
+  .rtag { font-size:0.65rem; font-weight:700; text-transform:uppercase; letter-spacing:0.07em; background:var(--purple); color:white; padding:0.22rem 0.65rem; border-radius:20px; }
+  .ract { display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.9rem; }
+  .ract button { padding:0.45rem 0.95rem; border-radius:6px; font-size:0.74rem; font-weight:600; cursor:pointer; transition:all 0.15s; }
+  .ract .cp { background:var(--purple); color:white; border:none; }
+  .ract .cp:hover { background:var(--purple-hover); }
+  .ract .ad { background:transparent; color:var(--purple); border:1.5px solid var(--purple); }
+  .ract .ad:hover { background:#f3f0ff; }
+
+  /* CONTACT */
+  .clink { display:flex; align-items:center; gap:0.5rem; font-size:0.88rem; color:var(--purple); margin-bottom:0.5rem; text-decoration:none; }
+  .clink:hover { text-decoration:underline; }
+
+  footer { background:white; border-top:1px solid var(--border); text-align:center; padding:1.2rem; font-size:0.73rem; color:var(--text-light); }
+
+  .new-badge { font-size:0.58rem; background:#10b981; color:white; padding:0.12rem 0.45rem; border-radius:10px; vertical-align:middle; margin-left:0.4rem; font-weight:700; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-top"><a href="#blog">BLOG</a></div>
+  <div class="nav-main">
+    <ul class="nav-links">
+      <li><a href="#home">Homepage</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#sample">SampleNaess</a></li>
+      <li><a href="#investors">Investors</a></li>
+      <li><a href="#jobs">Jobs Board</a></li>
+      <li class="falcon-link"><a href="#falcon">Falcon Recruiting</a></li>
+    </ul>
+    <span class="nav-brand">Falkland Islands Press, Inc.</span>
+    <div class="nav-right">
+      <span>Paradise Found</span>
+      <span>St. Paul–Minneapolis, Minnesota, USA</span>
+    </div>
+  </div>
+</nav>
+
+<!-- FALCON RECRUITING — BIG PROMINENT HERO -->
+<div class="falcon-hero" id="falcon">
+  <div class="falcon-inner">
+    <div>
+      <span class="falcon-badge">A Division of Falkland Islands Press</span>
+      <h1>Falcon Recruiting LLC</h1>
+      <p>Finding jobs for liberal arts majors, in positions that empower them and their communities. We connect businesses with like-minded services that will treat them like their only customer.</p>
+      <p style="font-size:0.82rem;font-style:italic;opacity:0.75;">Using Situated Legitimacy Metrics as a Hiring Strategy — context-aware, socially rooted, and epistemically responsible hiring.</p>
+      <div class="falcon-btns">
+        <a href="#contact" class="btn btn-white">Hire Through Falcon</a>
+        <a href="#contact" class="btn btn-ghost">Submit Your Resume</a>
+      </div>
+    </div>
+    <div class="falcon-stats">
+      <div class="fstat"><div class="fstat-num">Liberal<br><span style="font-size:1.1rem">Arts</span></div><div class="fstat-lbl">Focused Placements</div></div>
+      <div class="fstat"><div class="fstat-num">Local</div><div class="fstat-lbl">Community Investment</div></div>
+      <div class="fstat"><div class="fstat-num">Situated</div><div class="fstat-lbl">Legitimacy Metrics</div></div>
+      <div class="fstat"><div class="fstat-num">Twin<br><span style="font-size:1.1rem">Cities</span></div><div class="fstat-lbl">St. Paul–Minneapolis</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="home">
+
+  <div class="sec-label" id="about">About</div>
+
+  <div class="card">
+    <h2>About Me</h2>
+    <p>Located in East St. Paul, MN, FIpress, Inc. is a boutique publishing and editing company dedicated to preserving and advancing art, artifacts, and historical narratives. While initially considering a role as a lobbying firm, we chose instead to focus on becoming a leading force in acquiring, safeguarding, and sharing cultural treasures.</p>
+    <p class="fquote">My name is Shujaa Green. I am an aspiring editor with an Associate of Applied Science degree from St. Paul College in ElectroMechanical Automation Systems. I am currently working on my Bachelors of Science in Business at Metro State University. I am the Founder and CEO of The Maplewood Review — A magazine that shares stories from Working Professionals and Artists.</p>
+  </div>
+
+  <div class="card">
+    <h3>Art Dealer, Purchaser of Rare Artifacts, and CEO of Falkland Islands Press, Inc.</h3>
+    <p><strong>Coming soon: A seven episode podcast</strong></p>
+  </div>
+
+  <div class="podcast">
+    <div>
+      <h3>🎙 Seven Episode Podcast — Coming Soon</h3>
+      <p>Stories from working professionals, artists, and cultural stewards across the Twin Cities and beyond.</p>
+    </div>
+    <a href="#contact" class="btn btn-white" style="white-space:nowrap;flex-shrink:0;">Get Notified</a>
+  </div>
+
+  <div class="sec-label">The Maplewood Review</div>
+
+  <div class="card">
+    <h2>The Maplewood Review</h2>
+    <p><em>A Magazine that aims to feature the latest Short Stories, Diaries, Journals, Essays, Reflections &amp; Meditations, Papers and Poetry. We also love Journalism, Photojournalism and Animation Videos.</em></p>
+    <p>Our focus is on publishing critiques of Technocracy, and Books/Short Stories about Work Life Balance in the 21st Century.</p>
+    <p>The Maplewood Review is a left of center newsletter covering the latest from across the political spectrum. We accept Poems, Short Stories, and Essays for our Bi-annual. We pay closest attention to topics such as: The Environment, Manufacturing, Philosophy, and Economics.</p>
+    <a href="#contact" class="btn btn-purple" style="display:inline-block;margin-top:0.5rem;">Submit Your Work</a>
+  </div>
+
+  <div class="sec-label" id="sample">SampleNaess Prize</div>
+
+  <div class="prize-card">
+    <h2>The SampleNaess Prize for Literature</h2>
+    <p>It is worth <strong>$789</strong> and the submission fee is <strong>$75</strong>, with a minimum word count of <strong>10,000</strong>. There are unlimited first place winners and we pay $60 for second place winners in addition to being published. Unless we pay $45 or $15 — those are the minimum and maximum we may pay for a submission.</p>
+    <p>The subject is <strong>Predictions</strong>. We are looking for people's most outlandish theory on any topic — no questions asked. The prize is hosted by The Maplewood Review, it may pull wood.</p>
+    <p>Please direct all submissions to <a href="mailto:submissions@falklandislandspress.com" style="color:var(--purple);font-weight:600;">Falkland Islands Press, Inc.</a></p>
+    <p style="color:var(--text-light);font-size:0.84rem;">All welcome &amp; thank you for your time.</p>
+    <p><strong>Target publication date: August 2028</strong></p>
+    <a href="#contact" class="btn btn-purple" style="display:inline-block;margin-top:0.85rem;">Submit to the Prize →</a>
+  </div>
+
+  <div class="sec-label" id="jobs">Sustainable Jobs Board</div>
+
+  <!-- LIVE JOB LISTINGS -->
+  <div id="job-board"></div>
+
+  <div class="tool">
+    <h2>🌱 Sustainable Job Listing Generator</h2>
+    <p class="sub">Fill in the details below — Claude will write a compelling, values-aligned job listing ready to post on the board.</p>
+
+    <div class="frow">
+      <div class="fg"><label class="flbl">Job Title</label><input class="fi" type="text" id="j-title" placeholder="e.g. Community Outreach Coordinator"></div>
+      <div class="fg"><label class="flbl">Organization</label><input class="fi" type="text" id="j-org" placeholder="e.g. Green Cities Initiative"></div>
+    </div>
+    <div class="frow">
+      <div class="fg"><label class="flbl">Location</label><input class="fi" type="text" id="j-loc" placeholder="e.g. St. Paul, MN / Remote"></div>
+      <div class="fg"><label class="flbl">Job Type</label>
+        <select class="fs" id="j-type">
+          <option>Full-Time</option><option>Part-Time</option><option>Contract</option>
+          <option>Internship</option><option>Volunteer</option><option>Fellowship</option>
+        </select>
+      </div>
+    </div>
+    <div class="frow">
+      <div class="fg"><label class="flbl">Sector / Focus Area</label>
+        <select class="fs" id="j-sector">
+          <option>Environmental / Climate</option>
+          <option>Sustainable Agriculture</option>
+          <option>Renewable Energy</option>
+          <option>Community Development</option>
+          <option>Arts &amp; Humanities</option>
+          <option>Education &amp; Journalism</option>
+          <option>Tech for Good</option>
+          <option>Water &amp; Conservation</option>
+          <option>Social Justice</option>
+          <option>Manufacturing &amp; Trades</option>
+        </select>
+      </div>
+      <div class="fg"><label class="flbl">Salary / Compensation (optional)</label><input class="fi" type="text" id="j-pay" placeholder="e.g. $45,000–$55,000 / year"></div>
+    </div>
+    <div class="fg"><label class="flbl">Role Description &amp; Responsibilities</label><textarea class="ft" id="j-desc" placeholder="Describe the role, key duties, who you're looking for, community impact..."></textarea></div>
+    <div class="fg"><label class="flbl">Required Skills / Qualifications (optional)</label><input class="fi" type="text" id="j-skills" placeholder="e.g. liberal arts degree, community organizing, bilingual..."></div>
+    <div class="fg"><label class="flbl">Sustainability Values / Mission Alignment (optional)</label><input class="fi" type="text" id="j-values" placeholder="e.g. local investment, circular economy, racial equity..."></div>
+
+    <button class="genbtn" id="j-btn" onclick="genJob()">✦ Generate Job Listing with AI</button>
+
+    <div class="loadmsg" id="loadmsg">Crafting your job listing</div>
+    <div class="rbox" id="rbox">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.75rem;">
+        <div>
+          <div class="rtitle" id="r-title"></div>
+          <div class="rmeta" id="r-meta"></div>
+        </div>
+        <span id="r-type-badge" style="font-size:0.68rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;background:#d1fae5;color:#065f46;padding:0.25rem 0.75rem;border-radius:20px;white-space:nowrap;"></span>
+      </div>
+      <div class="rbody" id="r-body"></div>
+      <div class="rtags" id="r-tags"></div>
+      <div class="ract">
+        <button class="cp" onclick="copyRes()">Copy Listing</button>
+        <button class="ad" onclick="postJob()">Post to Board</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec-label" id="investors">Our Mission &amp; Business Plan</div>
+
+  <div class="card">
+    <h2>Our Mission</h2>
+    <p>Finding jobs for liberal arts majors, in positions that empower them and their communities. Falkland Islands Press wants to connect businesses with like-minded services that will treat them like their only customer. As a company, we like to invest locally. And we also would like to bring our passion for sustainability to the world. Our broader vision is to report on the developments of sustainable projects globally. We are also interested in the development of the arts and the humanities. And we like bringing tech to underdeveloped communities.</p>
+    <div class="mtags">
+      <span class="mtag">Self Publishing Consultation</span><span class="mtag">Job Board</span><span class="mtag">Bi-Annual Newsletter</span><span class="mtag">Philosophy Essays</span><span class="mtag">Environmental Writing</span><span class="mtag">Economic Essay Prizes</span><span class="mtag">Boutique Publishing</span><span class="mtag">Social Media Co</span>
+    </div>
+    <p><strong>Business Plan:</strong> To collect submissions and publish them in the newsletter. To commission manuscripts and also assist in self-publishing.</p>
+  </div>
+
+  <div class="idea">
+    <h3>Business Idea: Creative Advertising</h3>
+    <p>We help businesses grow through strategic mergers and acquisitions by leveraging the power of publishing. Our expertise in archiving and newsletter publishing allows us to modernize data management services and expand market reach. By acquiring complementary companies — such as digital storage solutions for archiving or niche media platforms for newsletters — we create opportunities for revenue growth, audience expansion, and service diversification.</p>
+  </div>
+
+  <div class="idea">
+    <h3>Business Idea 2: Providing Journalism</h3>
+    <p>We drive growth through strategic mergers, acquisitions, and innovative manufacturing solutions. By securing licensing and establishing a factory in Nigeria, we specialize in assembling custom equipment for sustainable agriculture, water management, and renewable energy. Additionally, we design and produce tablets and laptops tailored for data management and communication services, supporting efficiency in these critical sectors.</p>
+  </div>
+
+  <div class="sec-label" id="contact">Contact</div>
+
+  <div class="card">
+    <h2>Contact</h2>
+    <p>Questions, Submissions, Inquiries — reach out anytime.</p>
+    <a class="clink" href="tel:+16518029660">📞 +1 (651) 802-9660</a>
+    <a class="clink" href="mailto:submissions@falklandislandspress.com">✉ Email us — Questions, Submissions, Inquiries</a>
+  </div>
+
+</div>
+
+<footer>© 2025 Falkland Islands Press, Inc. All rights reserved.</footer>
+
+<script>
+// ── Job board state ──
+window._jobs = [];
+window._lastJob = null;
+
+function renderBoard() {
+  const board = document.getElementById('job-board');
+  if (window._jobs.length === 0) { board.innerHTML = ''; return; }
+  board.innerHTML = window._jobs.map((j, i) => `
+    <div style="background:white;border-radius:12px;box-shadow:0 2px 16px rgba(0,0,0,0.07);padding:1.5rem;margin-bottom:1rem;border-left:4px solid var(--purple);">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.5rem;">
+        <div>
+          <div style="font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:800;color:var(--purple);">${j.title}</div>
+          <div style="font-size:0.75rem;color:var(--text-light);text-transform:uppercase;letter-spacing:0.08em;margin-top:0.15rem;">${j.org} · ${j.location}</div>
+        </div>
+        <span style="font-size:0.67rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;background:#d1fae5;color:#065f46;padding:0.22rem 0.7rem;border-radius:20px;white-space:nowrap;">${j.type}</span>
+      </div>
+      <div style="font-size:0.88rem;color:var(--text);line-height:1.75;white-space:pre-wrap;margin-bottom:0.75rem;">${j.description}</div>
+      <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
+        ${(j.tags||[]).map(t=>`<span style="font-size:0.63rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;background:var(--purple);color:white;padding:0.2rem 0.6rem;border-radius:20px;">${t}</span>`).join('')}
+        ${j.pay ? `<span style="font-size:0.63rem;font-weight:700;background:#fef3c7;color:#92400e;padding:0.2rem 0.6rem;border-radius:20px;">💰 ${j.pay}</span>` : ''}
+      </div>
+      <button onclick="removeJob(${i})" style="margin-top:0.75rem;font-size:0.7rem;color:var(--text-light);background:none;border:none;cursor:pointer;padding:0;">✕ Remove listing</button>
+    </div>
+  `).join('');
+}
+
+function removeJob(i) {
+  window._jobs.splice(i, 1);
+  renderBoard();
+}
+
+async function callClaude(prompt) {
+  const r = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 1000, messages: [{ role: 'user', content: prompt }] })
+  });
+  const d = await r.json();
+  return d.content.map(b => b.text || '').join('');
+}
+
+async function genJob() {
+  const title = document.getElementById('j-title').value.trim();
+  const org = document.getElementById('j-org').value.trim();
+  const loc = document.getElementById('j-loc').value.trim();
+  const type = document.getElementById('j-type').value;
+  const sector = document.getElementById('j-sector').value;
+  const pay = document.getElementById('j-pay').value.trim();
+  const desc = document.getElementById('j-desc').value.trim();
+  const skills = document.getElementById('j-skills').value.trim();
+  const values = document.getElementById('j-values').value.trim();
+
+  if (!title && !desc) { alert('Please enter a job title or description.'); return; }
+
+  const prompt = `You are the jobs board editor for Falkland Islands Press and Falcon Recruiting LLC — a Twin Cities publisher and recruiting firm that prioritizes liberal arts graduates, community investment, sustainability, and situated legitimacy (hiring people who are locally rooted, relationally trusted, and long-term invested in their communities).
+
+Create a compelling, values-aligned sustainable job listing based on these details:
+Job Title: ${title || 'Unknown'}
+Organization: ${org || 'Unknown'}
+Location: ${loc || 'Twin Cities, MN'}
+Job Type: ${type}
+Sector: ${sector}
+Compensation: ${pay || 'Not specified'}
+Description: ${desc || 'Not provided'}
+Required Skills: ${skills || 'Not specified'}
+Sustainability Values: ${values || 'Not specified'}
+
+Write a job listing that emphasizes community impact, sustainability, and empowerment — appealing to liberal arts majors and mission-driven candidates. Keep it warm, specific, and inspiring.
+
+Respond ONLY with a valid JSON object (no markdown, no backticks, no extra text):
+{"title":"Job title","org":"Organization name","location":"Location","type":"Job type","pay":"Compensation or empty string","sector":"Sector","description":"2-3 paragraph job description emphasizing mission, responsibilities, and community impact. Warm and compelling. No bullet points.","tags":["tag1","tag2","tag3","tag4"]}`;
+
+  const btn = document.getElementById('j-btn');
+  const load = document.getElementById('loadmsg');
+  const box = document.getElementById('rbox');
+  btn.disabled = true; load.classList.add('on'); box.classList.remove('on');
+
+  try {
+    const raw = await callClaude(prompt);
+    const p = JSON.parse(raw.replace(/```json|```/g, '').trim());
+    document.getElementById('r-title').textContent = p.title || title || 'Job Listing';
+    document.getElementById('r-meta').textContent = `${p.org || org || 'Organization'} · ${p.location || loc || 'Location'} · ${p.sector || sector}`;
+    document.getElementById('r-type-badge').textContent = p.type || type;
+    document.getElementById('r-body').textContent = p.description || '';
+    const te = document.getElementById('r-tags'); te.innerHTML = '';
+    (p.tags || []).forEach(t => { const s = document.createElement('span'); s.className = 'rtag'; s.textContent = t; te.appendChild(s); });
+    if (p.pay) { const ps = document.createElement('span'); ps.style.cssText = 'font-size:0.65rem;font-weight:700;background:#fef3c7;color:#92400e;padding:0.22rem 0.65rem;border-radius:20px;'; ps.textContent = '💰 ' + p.pay; te.appendChild(ps); }
+    window._lastJob = p;
+    box.classList.add('on');
+  } catch(e) { alert('Error generating listing. Please try again.'); console.error(e); }
+  finally { btn.disabled = false; load.classList.remove('on'); }
+}
+
+function copyRes() {
+  const t = document.getElementById('r-title').textContent;
+  const m = document.getElementById('r-meta').textContent;
+  const b = document.getElementById('r-body').textContent;
+  navigator.clipboard.writeText(`${t}\n${m}\n\n${b}`);
+  event.target.textContent = 'Copied!';
+  setTimeout(() => event.target.textContent = 'Copy Listing', 2000);
+}
+
+function postJob() {
+  const j = window._lastJob; if (!j) return;
+  window._jobs.unshift(j);
+  renderBoard();
+  document.getElementById('job-board').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  event.target.textContent = 'Posted!';
+  setTimeout(() => event.target.textContent = 'Post to Board', 2000);
+}
+</script>
+</body>
+</html>
